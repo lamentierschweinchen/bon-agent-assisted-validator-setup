@@ -14,7 +14,7 @@ For safety, I would target:
 - `4 vCPU`
 - `16 GB RAM`
 - `250 GB gp3` or better SSD
-- a dedicated machine or at least an instance not shared with your claw bot
+- a dedicated machine, not shared with other workloads
 
 ## Common under-spec examples
 
