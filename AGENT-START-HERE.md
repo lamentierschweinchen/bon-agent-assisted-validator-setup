@@ -4,7 +4,7 @@ This document is the entry point for an agent that needs to replicate the initia
 
 If you are the agent, read this file first, then open the linked Markdown files in the order listed below. Do not start by improvising from generic MultiversX docs. This repository captures the BoN-specific details and the command paths that were validated in practice.
 
-## Goal
+## Challenge 1 Goal
 
 Complete the initial BoN validator setup:
 
@@ -18,7 +18,21 @@ Complete the initial BoN validator setup:
 8. Start a BoN node with a node name containing `BoN`.
 9. Collect proof artifacts for both on-chain setup and node runtime.
 
+## Challenge 2 Goal
+
+Complete five distinct on-chain tasks on top of the existing validator setup:
+
+1. Stake 10 EGLD into the MultiversX Community Delegation on BoN.
+2. Delegate 10 EGLD to your own staking provider.
+3. Undelegate 1 EGLD from your own provider.
+4. Change your provider service fee to 7.89%.
+5. Vote on an active BoN governance proposal.
+
+Start at [docs/challenge-2-playbook.md](docs/challenge-2-playbook.md).
+
 ## Read Order
+
+**Challenge 1 — initial validator setup:**
 
 1. [docs/bon-network-reference.md](docs/bon-network-reference.md)
 2. [docs/agent-manual-steps.md](docs/agent-manual-steps.md)
@@ -27,6 +41,12 @@ Complete the initial BoN validator setup:
 5. [docs/agent-node-local.md](docs/agent-node-local.md)
 6. [docs/agent-node-hosted.md](docs/agent-node-hosted.md)
 7. [docs/agent-verification-checklist.md](docs/agent-verification-checklist.md)
+
+**Challenge 2 — delegation, undelegation, service fee, governance:**
+
+8. [docs/challenge-2-playbook.md](docs/challenge-2-playbook.md)
+9. [docs/community-delegation-task.md](docs/community-delegation-task.md) (Task 1 deep dive)
+10. [docs/challenge-2-learnings.md](docs/challenge-2-learnings.md) (cross-task patterns and traps)
 
 Then inspect these workspace helpers before taking action:
 
@@ -121,9 +141,16 @@ These were the most important live findings from this workspace and should be tr
    - top up delegate: `1248000000000000000000`
 3. `--total-delegation-cap 2500` remained in human EGLD units when used with `mxpy`.
 4. `add-nodes` worked directly from `validatorKey.pem`; no separate BLS signing utility was needed.
+5. The separate "MultiversX Community Delegation" task on BoN used a legacy delegation contract and a raw `stake` transaction, not the normal staking-provider `delegate` command.
 
 Do not hide those details behind generic docs. They are the difference between a plausible runbook and one that actually works.
 
-## Suggested Prompt For Another Agent
+## Suggested Prompts For Another Agent
+
+**Challenge 1:**
 
 `Read AGENT-START-HERE.md in the Battle of Nodes workspace and execute the initial BoN validator setup end to end. Use the local scripts and linked docs first. Minimize manual steps and pause only for wallet creation, wallet funding, missing keys, or hosted server provisioning.`
+
+**Challenge 2:**
+
+`Read AGENT-START-HERE.md in the Battle of Nodes workspace, then open docs/challenge-2-playbook.md and execute Challenge 2 tasks 1 through 5. Collect proof for each task immediately after execution. Pause only if a wallet is unfunded or no active governance proposal exists.`

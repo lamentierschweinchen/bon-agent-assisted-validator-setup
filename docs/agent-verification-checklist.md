@@ -14,6 +14,18 @@ The following must be true:
 6. provider stake reached at least `2500 EGLD`
 7. stake-nodes transaction succeeded
 
+## Community Delegation Proof
+
+If the task is specifically the existing MultiversX Community Delegation, use [community-delegation-task.md](community-delegation-task.md).
+
+The proven BoN-specific checks were:
+
+1. send the transaction to `erd1qqqqqqqqqqqqqpgqxwakt2g7u9atsnr03gqcgmhcv38pt7mkd94q6shuwt`
+2. use `data = stake`
+3. use `value = 10000000000000000000`
+4. verify transaction status is `success`
+5. verify `getUserStake(addr:<wallet>)` on that contract returns a nonzero amount
+
 ## Required Artifacts
 
 Keep:
@@ -77,3 +89,70 @@ The initial setup is done when:
 3. the node is added and staked
 4. the node is running on BoN with the BoN version
 5. proof artifacts are saved
+
+---
+
+## Challenge 2 Verification
+
+Use this section after completing Challenge 2 tasks 1 through 5.
+
+For the full task sequence and commands, see [challenge-2-playbook.md](challenge-2-playbook.md).
+
+### Per-Task Proof Requirements
+
+For every task, verify and record:
+
+1. the exact receiver contract or provider address
+2. the exact function name or data field
+3. the exact encoded amount or parameter
+4. transaction status is `success` on-chain
+5. the follow-up state query from the correct source (contract query, not only API)
+
+### Task 1: Community Delegation
+
+- receiver: `erd1qqqqqqqqqqqqqpgqxwakt2g7u9atsnr03gqcgmhcv38pt7mkd94q6shuwt`
+- data: `stake`
+- value: `10000000000000000000`
+- `getUserStake` query returns `10000000000000000000`
+
+Note: if the API query `getUserActiveStake` returns empty on this contract, use `getUserStake` instead.
+
+### Task 2: Self-Delegation
+
+- receiver: your own staking provider contract
+- value: `10000000000000000000`
+- transaction status: `success`
+- confirm provider capacity was available before the transaction (cap check)
+
+### Task 3: Undelegation
+
+- receiver: your own staking provider contract
+- function: `unDelegate`
+- value: `1000000000000000000`
+- transaction status: `success`
+- funds may not appear as spendable balance immediately — the `unDelegate` tx hash is the proof, not the balance change
+
+### Task 4: Service Fee Change
+
+- transaction status: `success`
+- `getServiceFee` contract query returns `789`
+- human form: `7.89%`, encoded form: `789`
+- if the provider API shows a stale fee, the contract query is the authoritative proof source
+
+### Task 5: Governance Vote
+
+- transaction status: `success`
+- proposal ID voted on
+- vote option cast
+- saved evidence that the proposal was still active at time of vote
+
+### Challenge 2 Done State
+
+Challenge 2 is complete when:
+
+1. community delegation tx confirmed with correct receiver, data, and value
+2. self-delegation tx confirmed with correct provider and amount
+3. undelegation tx confirmed with correct provider and amount
+4. service fee change confirmed — `getServiceFee` returns `789`
+5. governance vote confirmed against an active proposal
+6. proof bundle saved for all five tasks
