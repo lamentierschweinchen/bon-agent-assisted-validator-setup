@@ -21,9 +21,10 @@ and verification. You handle wallet funding and optionally provisioning a server
 1. Operator wallet creation or import
 2. Validator key creation or import
 3. BoN on-chain provider and staking setup
-4. Local node path (laptop or terminal)
-5. Hosted Ubuntu node path (server)
-6. Verification and proof collection
+4. Local node path (macOS / Linux)
+5. Windows + WSL2 node path
+6. Hosted Ubuntu node path (server)
+7. Verification and proof collection
 
 **Challenge 2 — post-validator on-chain tasks:**
 
@@ -38,3 +39,4 @@ and verification. You handle wallet funding and optionally provisioning a server
 - [`mxpy`](https://docs.multiversx.com/sdk-and-tools/mxpy/installing-mxpy/) installed
 - A funded operator wallet (~2500 EGLD for staking plus gas)
 - Optional: an Ubuntu 22.04+ server for a durable validator node
+- Optional: Windows 10/11 with WSL2 for local node on Windows (see [docs/agent-node-windows.md](docs/agent-node-windows.md))

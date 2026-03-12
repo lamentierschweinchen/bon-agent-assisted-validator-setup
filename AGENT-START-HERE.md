@@ -39,14 +39,15 @@ Start at [docs/challenge-2-playbook.md](docs/challenge-2-playbook.md).
 3. [docs/agent-onchain-sequence.md](docs/agent-onchain-sequence.md)
 4. [docs/agent-official-resources.md](docs/agent-official-resources.md)
 5. [docs/agent-node-local.md](docs/agent-node-local.md)
-6. [docs/agent-node-hosted.md](docs/agent-node-hosted.md)
-7. [docs/agent-verification-checklist.md](docs/agent-verification-checklist.md)
+6. [docs/agent-node-windows.md](docs/agent-node-windows.md) (Windows + WSL2)
+7. [docs/agent-node-hosted.md](docs/agent-node-hosted.md)
+8. [docs/agent-verification-checklist.md](docs/agent-verification-checklist.md)
 
 **Challenge 2 — delegation, undelegation, service fee, governance:**
 
-8. [docs/challenge-2-playbook.md](docs/challenge-2-playbook.md)
-9. [docs/community-delegation-task.md](docs/community-delegation-task.md) (Task 1 deep dive)
-10. [docs/challenge-2-learnings.md](docs/challenge-2-learnings.md) (cross-task patterns and traps)
+9. [docs/challenge-2-playbook.md](docs/challenge-2-playbook.md)
+10. [docs/community-delegation-task.md](docs/community-delegation-task.md) (Task 1 deep dive)
+11. [docs/challenge-2-learnings.md](docs/challenge-2-learnings.md) (cross-task patterns and traps)
 
 Then inspect these workspace helpers before taking action:
 
@@ -84,7 +85,7 @@ Then inspect these workspace helpers before taking action:
 
 ## Decision Tree
 
-### Option A: Local terminal-only setup
+### Option A: Local terminal-only setup (macOS / Linux)
 
 Use this when:
 
@@ -99,6 +100,23 @@ Path:
 3. Wait for sync or restore a snapshot if time matters.
 
 Use [docs/agent-node-local.md](docs/agent-node-local.md).
+
+### Option A2: Windows + WSL2 setup
+
+Use this when:
+
+- the operator's machine is Windows 10/11
+- WSL2 with Ubuntu is available or can be installed
+- the goal is local validation or bug hunting without a hosted server
+
+Path:
+
+1. Install WSL2 and Ubuntu if needed.
+2. Complete the on-chain provider steps (all commands run in WSL2).
+3. Build and run the native node inside WSL2.
+4. Wait for sync or restore a snapshot if time matters.
+
+Use [docs/agent-node-windows.md](docs/agent-node-windows.md).
 
 ### Option B: Real hosted validator node
 
