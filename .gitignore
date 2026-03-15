@@ -14,3 +14,5 @@ node-challenge/artifacts/
 *.zip
 .superpowers/
 docs/superpowers/
+artifacts/tx-sprint/
+scripts/tx-sprint/__pycache__/

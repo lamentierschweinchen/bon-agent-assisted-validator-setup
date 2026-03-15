@@ -43,14 +43,19 @@ Start with [docs/challenge-3-learnings.md](docs/challenge-3-learnings.md).
 
 ## Challenge 4 Goal
 
-Prepare and execute the baseline stress windows:
+Prepare and execute live BoN stress windows:
 
-1. Window A: high-volume intra-shard `MoveBalance`
-2. Window B: DEX smart contract calls
+1. high-volume `MoveBalance`
+2. DEX smart contract calls
+3. cross-shard transaction windows
+4. relayed `MoveBalance` windows
+5. relayed DEX smart contract call windows
 
-Treat Part 1 and Part 2 as separate workloads with separate proof and recovery decisions.
+Treat each official window as a separate workload with separate sender attribution, proof, recovery, and post-window log handling.
 
-Start with [docs/challenge-4-baseline-learnings.md](docs/challenge-4-baseline-learnings.md).
+Start with [docs/stress-window-learnings.md](docs/stress-window-learnings.md).
+
+If the current stress task is primarily a high-volume `MoveBalance` sender challenge, also open [docs/tx-sprint-harness.md](docs/tx-sprint-harness.md).
 
 ## Read Order
 
@@ -74,9 +79,10 @@ Start with [docs/challenge-4-baseline-learnings.md](docs/challenge-4-baseline-le
 
 11. [docs/challenge-3-learnings.md](docs/challenge-3-learnings.md)
 
-**Challenge 4 baseline — stress windows A and B:**
+**Challenge 4 — live stress windows:**
 
-12. [docs/challenge-4-baseline-learnings.md](docs/challenge-4-baseline-learnings.md)
+12. [docs/stress-window-learnings.md](docs/stress-window-learnings.md)
+13. [docs/tx-sprint-harness.md](docs/tx-sprint-harness.md)
 
 Then inspect these workspace helpers before taking action:
 
@@ -86,6 +92,7 @@ Then inspect these workspace helpers before taking action:
 4. [scripts/build-add-node-tx.sh](scripts/build-add-node-tx.sh)
 5. [node-challenge/install-bon-node.sh](node-challenge/install-bon-node.sh)
 6. [node-challenge/verify-bon-node.sh](node-challenge/verify-bon-node.sh)
+7. [scripts/tx-sprint/tx-sprint](scripts/tx-sprint/tx-sprint)
 
 ## Agent Rules
 
@@ -189,6 +196,6 @@ Do not hide those details behind generic docs. They are the difference between a
 
 `Read AGENT-START-HERE.md in the Battle of Nodes workspace, then open docs/challenge-3-learnings.md and execute the backup-node, restart-drill, and log-upload tasks. Optimize for accepted proof surfaces: naming, heartbeat, real restart logs, and required uploaded log phrases.`
 
-**Challenge 4 baseline:**
+**Challenge 4:**
 
-`Read AGENT-START-HERE.md in the Battle of Nodes workspace, then open docs/challenge-4-baseline-learnings.md and execute the baseline stress windows. Prepare retry-safe tooling, preserve incremental run artifacts, and verify on-chain success counts before deciding whether to top up.`
+`Read AGENT-START-HERE.md in the Battle of Nodes workspace, then open docs/stress-window-learnings.md and execute the live stress windows. Prepare retry-safe tooling, preserve incremental run artifacts, use fresh attributed sender sets per window, and verify on-chain success counts before deciding whether to top up.`

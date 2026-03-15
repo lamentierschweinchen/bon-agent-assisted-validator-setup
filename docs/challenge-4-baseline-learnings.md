@@ -1,5 +1,9 @@
 # Challenge 4 Baseline Learnings
 
+This document preserves the live lessons from the original baseline windows A and B.
+
+For the current evergreen guide that covers stress-window operations more generally, start with [stress-window-learnings.md](stress-window-learnings.md).
+
 This document captures the operational lessons from Battle of Nodes Challenge 4 baseline, Part 1 and Part 2:
 
 1. Window A: high-volume intra-shard `MoveBalance`
@@ -199,4 +203,3 @@ Window A and Window B should each have their own run artifacts, success check, a
 ### 5. Keep The Validator Healthy While Sending
 
 The strongest challenge run is one where the transaction load succeeds and the node remains synced and active throughout.
-

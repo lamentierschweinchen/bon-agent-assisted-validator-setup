@@ -201,9 +201,9 @@ Challenge 3 is complete when:
 
 ---
 
-## Challenge 4 Baseline Verification
+## Challenge 4 Stress Window Verification
 
-Use this section after completing Window A and Window B of the baseline stress challenge.
+Use this section after completing one or more live stress windows.
 
 ### Pre-Window Checks
 
@@ -214,16 +214,16 @@ Before launching a workload, verify:
 3. main validator is healthy if the page requires node restarts around the window
 4. run artifacts will be written incrementally during the send loop
 
-### Window A: Intra-Shard `MoveBalance`
+### Any `MoveBalance` Window
 
 Verify and record:
 
 1. sender addresses are challenge addresses funded from the registered wallet
-2. sender and receiver are in the same shard
+2. sender and receiver satisfy the required shard relationship for that window
 3. submitted run artifacts exist even if the sender path times out
 4. actual on-chain success count is measured after the run
 
-### Window B: DEX Calls
+### Any DEX Window
 
 Verify and record:
 
@@ -232,6 +232,23 @@ Verify and record:
 3. submitted run artifacts exist and include transaction hashes
 4. actual on-chain success count is measured after the run
 
+### Any Relayed Window
+
+Verify and record:
+
+1. relayer-paid fee path matches the live task
+2. sender and relayer roles are captured in the proof artifacts
+3. relayed transaction encoding was tested before the official window
+4. follow-up success checks are measured from the saved run artifacts
+
+### Infrastructure And Log Proof
+
+Verify and record:
+
+1. any required pre-window and post-window main-node restarts were actually performed
+2. the main validator log segment covering the stress window was preserved
+3. the exact uploaded log bundle is kept separately from runtime folders
+
 ### Interpretation Rules
 
 1. `submitted` is not the same as `success`
@@ -239,11 +256,11 @@ Verify and record:
 3. if a verifier tool returns `unknown` because of local environment restrictions, rerun the status pass from an unrestricted environment before sending unnecessary recovery load
 4. use success shortfall, not submission count alone, to decide whether another chunk is needed
 
-### Challenge 4 Baseline Done State
+### Challenge 4 Done State
 
-Challenge 4 baseline is complete when:
+Challenge 4 is complete when:
 
-1. Window A qualifying transactions were sent inside the official window and attributed correctly
-2. Window B qualifying DEX calls were sent inside the official window and attributed correctly
-3. per-window run artifacts are saved
-4. on-chain success counts have been measured or can be measured from the saved artifacts
+1. each qualifying window workload was sent inside its official time window and attributed correctly
+2. per-window run artifacts are saved
+3. on-chain success counts have been measured or can be measured from the saved artifacts
+4. any required restart and log-upload proof is preserved
