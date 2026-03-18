@@ -78,6 +78,15 @@ The following endpoint patterns are useful later:
 - [BoN Docker image](https://hub.docker.com/layers/multiversx/chain-mainnet/v1.11.0.3-bon/images/sha256-b1fdd9de01cb35ddffbdb7c549f6ac722e76f515a615b92155cea231fe7e9b2f)
   - optional container path if the operator chooses Docker instead of native build or `mx-chain-scripts`
 
+## AI Skills For Agents
+
+Optional skill packages that give an agent sharper MultiversX context. Useful before C2–C4 work involving SDK transactions, ESDT, or DEX calls.
+
+- [multiversx/mx-ai-skills](https://github.com/multiversx/mx-ai-skills) — official MultiversX skill set (smart contracts, sdk-dapp, protocol internals, auditing)
+- [michavie/mx-ai-skills](https://github.com/michavie/mx-ai-skills) — community complement (contracts, frontend, backend SDKs, protocol architecture)
+
+See [agent-skills.md](agent-skills.md) for install instructions and BoN-specific relevance notes.
+
 ## Local Workspace References
 
 These are not official docs, but they are the most useful local references in this workspace:

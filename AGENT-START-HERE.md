@@ -57,6 +57,10 @@ Start with [docs/stress-window-learnings.md](docs/stress-window-learnings.md).
 
 If the current stress task is primarily a high-volume `MoveBalance` sender challenge, also open [docs/tx-sprint-harness.md](docs/tx-sprint-harness.md).
 
+## Optional: MultiversX AI Skills
+
+If your environment supports it, loading [multiversx/mx-ai-skills](https://github.com/multiversx/mx-ai-skills) (official) or [michavie/mx-ai-skills](https://github.com/michavie/mx-ai-skills) (community) before this session adds useful MultiversX protocol and SDK context — particularly for C2–C4 work. See [docs/agent-skills.md](docs/agent-skills.md).
+
 ## Read Order
 
 **Challenge 1 — initial validator setup:**
